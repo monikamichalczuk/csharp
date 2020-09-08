@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace App1
+{
+    public partial class Form_moje_okno : Form
+    {
+        public Form_moje_okno()
+        {
+            InitializeComponent();
+        }
+
+        private void button_zakoncz_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button_wyswietl_dane_Click(object sender, EventArgs e)
+        {
+            
+
+            string tmp = textBox_imie.Text + " " + textBox_nazwisko.Text;
+
+            label_imie_nazwisko.Text = tmp + " " + monthCalendar_data_urodzenia.SelectionRange.Start.ToShortDateString();
+            label1.Text = dateTimePicker1.Value.ToShortDateString();
+        }
+
+        private void Form_moje_okno_Load(object sender, EventArgs e)
+        {
+            Person new_person = new Person();
+            textBox_imie.Text = new_person.getaaa();
+            textBox_nazwisko.Text = new_person.getbbb();
+
+        }
+    }
+
+
+    class Person
+    {
+        private string aaa;
+        private string bbb;
+
+        public Person()
+        {
+            aaa = "John";
+            bbb = "Doe";
+        }
+
+        public string getaaa() { return aaa; }
+        public string getbbb() { return bbb; }
+    }
+}
